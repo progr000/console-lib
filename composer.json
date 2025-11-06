@@ -39,6 +39,9 @@
     ],
     "post-create-project-cmd": [
       "mkdir -p Console/"
+    ],
+    "post-package-install": [
+      "mkdir -p Console/"
     ]
   },
   "minimum-stability": "stable",
