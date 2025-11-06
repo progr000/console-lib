@@ -1,0 +1,43 @@
+{
+  "name": "maksym/console-lib",
+  "type": "library",
+  "description": "console commands interface for small framework",
+  "keywords": [
+    "console",
+    "command",
+    "cmd",
+    "run"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Maksym Haivoronskyi",
+      "email": "maksym.haivoronskyi@gmail.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.0",
+    "ext-mbstring": "*",
+    "maksym/log-lib": ">=1.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "Maksym\\Console\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "mkdir -p Console/"
+    ]
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
