@@ -1,7 +1,7 @@
 <?php
 /** Enter-point for console-app running by go.sh */
 
-require_once(__DIR__ . '/../vendor/autoload.php');
+require_once(__DIR__ . '/../../vendor/autoload.php');
 
 use Maksym\Log\LogDriver;
 
@@ -9,7 +9,7 @@ use Maksym\Log\LogDriver;
 set_time_limit(0);
 try {
 
-    $TASK_DIR = __DIR__ . "/../Console";
+    $TASK_DIR = __DIR__ . "/../Example";
 
     /* route */
     if (isset($argv[1])) {
@@ -24,7 +24,10 @@ try {
 
         if (file_exists($TASK_DIR . "/{$argv[1]}.php")) {
 
-            $route = 'Console\\' . $argv[1];
+            //require(realpath($TASK_DIR . "/{$argv[1]}.php"));
+            //var_dump($TASK_DIR . "/{$argv[1]}.php");
+            //$route = $argv[1];
+            $route = 'Maksym\\Console\\Example\\' . $argv[1];
             unset($argv[0], $argv[1]);
 
             /* Run task */
