@@ -35,19 +35,19 @@
   },
   "scripts": {
     "post-install-cmd": [
-      "mkdir -p Console/"
+      "echo post-install-cmd"
     ],
     "post-create-project-cmd": [
-      "mkdir -p Console/"
+      "echo post-create-project-cmd"
     ],
     "post-package-install": [
-      "mkdir -p Console/"
+      "echo post-package-install"
     ],
     "post-update-cmd": [
-      "mkdir -p Console/"
+      "echo post-update-cmd"
     ],
     "post-package-update": [
-      "mkdir -p Console/"
+      "echo post-package-update"
     ]
   },
   "minimum-stability": "stable",
