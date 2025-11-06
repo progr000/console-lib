@@ -42,6 +42,12 @@
     ],
     "post-package-install": [
       "mkdir -p Console/"
+    ],
+    "post-update-cmd": [
+      "mkdir -p Console/"
+    ],
+    "post-package-update": [
+      "mkdir -p Console/"
     ]
   },
   "minimum-stability": "stable",
