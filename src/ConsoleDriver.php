@@ -83,7 +83,8 @@ abstract class ConsoleDriver
     {
         /**/
         //$this->className = basename(str_replace('\\', '/', static::class));
-        $this->className = basename(str_replace('\\', '/', "\\Maksym\\Console\\ConsoleDriver"));
+        //dumpIntoSTDERR(get_called_class(), get_class($this), __CLASS__, static::class);
+        $this->className = basename(str_replace('\\', '/', get_called_class()));
 
         /* Start global timer */
         $this->timerStart('global');
