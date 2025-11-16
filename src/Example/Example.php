@@ -5,12 +5,12 @@ use Maksym\Console\ConsoleDriver;
 
 class Example extends ConsoleDriver
 {
-    protected $available_params = [
+    protected $available_params = array(
         'some-any-name1-method'           => "\t\t\tif someAnyName1Method exists in class it will be started (must be not private).",
         'some-any-name2-method'           => "\t\t\tif someAnyName2Method exists in class it will be started (must be not private).\n\t\t\t\t\tYou can start several processes with one command,\n\t\t\t\t\tbut they will be executed one after the other in the order of",
         '--set-some-any-name1-variable'   => "=val\tset value for some_any_name1_variable (must be not private)",
         '--set-some-any-nameN-variable'   => "=val\tset value for some_any_nameN_variable (must be not private)\n",
-    ];
+    );
 
     protected $some_any_name1_variable;
 

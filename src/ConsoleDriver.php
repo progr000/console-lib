@@ -10,21 +10,21 @@ abstract class ConsoleDriver
     /** @var bool  */
     protected $debug_mode = false;
     /** @var array */
-    protected $available_params = [];
+    protected $available_params = array();
     /** @var string[]  */
-    protected $available_params_sys = [
+    protected $available_params_sys = array(
         "\n-0 or -v[v[v[v]]]" => "\t\tverbose level",
         //'--log-file' => "=/path\t\tWhere to save log file, by default '{log_file}'",
         '--debug' => "\t\t\t\tShow debug on Exceptions",
         '--help' => "\t\t\t\tShow this help",
-    ];
+    );
 
     /** @var int */
     protected $verbose_level = 1;
     /** @var string */
     protected $className;
     /** @var array */
-    private $timer = [];
+    private $timer = array();
     /** @var bool */
     protected $is_usage = false;
     /** @var bool */
@@ -82,7 +82,8 @@ abstract class ConsoleDriver
     final function __construct(array $arguments)
     {
         /**/
-        $this->className = basename(str_replace('\\', '/', static::class));
+        //$this->className = basename(str_replace('\\', '/', static::class));
+        $this->className = basename(str_replace('\\', '/', "\\Maksym\\Console\\ConsoleDriver"));
 
         /* Start global timer */
         $this->timerStart('global');
@@ -113,7 +114,7 @@ abstract class ConsoleDriver
                     $this->$prop_name = doubleval($prop_val);
                     break;
                 case 'boolean':
-                    $this->$prop_name = in_array(mb_strtolower($prop_val), ['yes', '1', 'enable', 'true']);
+                    $this->$prop_name = in_array(mb_strtolower($prop_val), array('yes', '1', 'enable', 'true'));
                     break;
                 default:
                     $this->$prop_name = $prop_val;
@@ -132,7 +133,7 @@ abstract class ConsoleDriver
         try {
 
             /**/
-            $actions = [];
+            $actions = array();
             foreach ($arguments as $v) {
                 if ($v === '-0') $this->verbose_level = 0;
                 elseif ($v === '-v') $this->verbose_level = 1;
@@ -167,13 +168,21 @@ abstract class ConsoleDriver
                 if (strrpos($prop_key, '--set-') !== false) {
 
                     /* this is set variable value */
-                    $prop_name = str_replace(['--set-', '-'], ['', '_'], $prop_key);
+                    $prop_name = str_replace(
+                        array('--set-', '-'),
+                        array('', '_'),
+                        $prop_key
+                    );
                     $this->setValueToProperty($prop_name, $prop_val);
 
                 } elseif ($prop_val === null) {
 
                     /* this is name of process */
-                    $prop_name = str_replace(['--', '-'], ['', '_'], $prop_key);
+                    $prop_name = str_replace(
+                        array('--', '-'),
+                        array('', '_'),
+                        $prop_key
+                    );
                     $this->setValueToProperty($prop_name, $prop_val);
 
                     /**/
@@ -249,6 +258,7 @@ abstract class ConsoleDriver
         foreach ($params as $k => $v) {
             $v = "[warn]{$k}[/warn]$v";
             unset($matches);
+            $matches = array();
             preg_match_all('/{([a-z0-9_]*)}/i', $v, $matches);
             if (isset($matches[1][0]) && property_exists($this, $matches[1][0])) {
                 $v = str_replace("{{$matches[1][0]}}", $this->{$matches[1][0]}, $v);
